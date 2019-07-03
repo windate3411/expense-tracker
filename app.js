@@ -3,6 +3,10 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 
+// importing models
+const Record = require('./models/record')
+const User = require('./models/user')
+
 // importing view template
 const exphbs = require('express-handlebars')
 
