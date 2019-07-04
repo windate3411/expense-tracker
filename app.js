@@ -47,7 +47,7 @@ db.once('open', () => {
 
 // setting routes
 app.use('/', require('./routes/home.js'))
-app.use('/user', require('./routes/user'))
+app.use('/users', require('./routes/user'))
 app.use('/record', require('./routes/record'))
 
 // setting sever

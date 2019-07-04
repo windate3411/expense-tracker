@@ -3,6 +3,11 @@
     <div class="card card-body">
       <h1 class="text-center">Register</h1>
       {{> messages}}
+      {{#each err_msg}}
+      {{#if err_msg}}
+      <div class="bg-secondary">{{this.msg}}</div>
+      {{/if}}
+      {{/each}}
       {{!-- 利用boostrap-validator做前端驗證，未滿足條件則阻止表單送出 --}}
       <form class="text-center" style="color: #757575;" action="/users/register" method="POST" data-toggle="validator">
 
@@ -50,8 +55,6 @@
         <p>or sign in with:</p>
         <a href="/auth/facebook" class="fab fa-facebook-f"></a>
         <a href="/auth/google" class="fab fa-google"></a>
-        <a href="/auth/github" class="fab fa-github"></a>
-
       </form>
     </div>
   </div>
