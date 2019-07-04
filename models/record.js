@@ -12,7 +12,7 @@ const Record = new Schema({
   },
   date: {
     type: Date,
-    default: Date.now
+    required: true
   },
   category: {
     type: String,
@@ -22,7 +22,7 @@ const Record = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
     index: true,
-    required: true
+    // required: true
   }
 })
 

@@ -18,6 +18,17 @@
 </head>
 
 <body>
+  {{!-- navbar --}}
+  <nav class="navbar navbar-dark default-color justify-content-between">
+    <a class="navbar-brand" href="/">家庭記帳本</a>
+    {{!-- show the buttons if the user logins --}}
+    {{!-- {{#if isAuthenticated}} --}}
+    <div style="display: inline">
+      <a href="/record/new" class="btn btn-info btn-sm">新增支出</a>
+      <a href="/users/logout" class="btn btn-danger btn-sm">登出</a>
+    </div>
+    {{!-- {{/if}} --}}
+  </nav>
   {{{body}}}
   <!-- JQuery -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -32,6 +43,8 @@
   {{!-- bootstrapValidator --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+
+  <script src="/js/validation.js"></script>
 </body>
 
 </html>

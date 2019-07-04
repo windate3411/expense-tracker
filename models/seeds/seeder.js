@@ -19,6 +19,7 @@ db.on('error', () => {
 })
 
 db.once('open', () => {
+  //create users
   user_data.forEach((item, index) => {
     bcrypts.genSalt(10, (err, salt) => {
       bcrypts.hash(item.password, salt, (err, hash) => {

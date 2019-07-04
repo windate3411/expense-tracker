@@ -1,9 +1,16 @@
 const express = require('express')
 const router = express.Router()
+const Record = require('../models/record')
 
+// home page
 router.get('/', (req, res) => {
-  res.render('index')
+  const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  Record.find((err, records) => {
+    if (err) return console.log(err);
+    res.render('index', { records, months })
+  })
 })
+
 
 
 module.exports = router
