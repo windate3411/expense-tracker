@@ -2,7 +2,10 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+
+// importing tools 
 const methodOverride = require('method-override')
+const flash = require('connect-flash')
 
 // importing models
 const Record = require('./models/record')
@@ -25,6 +28,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // using static files
 app.use(express.static('public'))
+
+// using connect-flash
+app.use(flash())
 
 // setting method-override
 app.use(methodOverride('_method'))
@@ -68,7 +74,9 @@ require('./config/passport')(passport)
 app.use((req, res, next) => {
   res.locals.userName = 'Danny'
   res.locals.user = req.user
-  // res.locals.isAuthenticated = req.isAuthenticated //加入這行
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
+  res.locals.isAuthenticated = req.isAuthenticated //加入這行
   next()
 })
 // setting routes

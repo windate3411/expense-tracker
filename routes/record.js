@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-
+const { autenticated } = require('../config/auth')
 // importing models
 const Record = require('../models/record')
 
@@ -8,7 +8,7 @@ const Record = require('../models/record')
 const { check, validationResult } = require('express-validator');
 
 // add new record
-router.get('/new', (req, res) => {
+router.get('/new', autenticated, (req, res) => {
   //create a function to get the current time to put in view
   const date = new Date()
   const currentDate = {
@@ -26,7 +26,7 @@ router.get('/new', (req, res) => {
   res.render('new', { result })
 })
 
-router.post('/new', [
+router.post('/new', autenticated, [
   check('name')
     .not().isEmpty()
     .withMessage('支出項目是必填項目喔!'),
@@ -58,7 +58,7 @@ router.post('/new', [
 })
 
 //edit page
-router.get('/edit/:id', (req, res) => {
+router.get('/edit/:id', autenticated, (req, res) => {
   Record.findOne({ _id: req.params.id }, (err, record) => {
     if (err) return console.log(err);
     // slice record.date so then it could be used in edit.handlebars as value = {{record_date}}
@@ -67,7 +67,7 @@ router.get('/edit/:id', (req, res) => {
   })
 })
 
-router.put('/edit/:id', [
+router.put('/edit/:id', autenticated, [
   check('name')
     .not().isEmpty()
     .withMessage('支出項目是必填項目喔!'),
@@ -96,7 +96,7 @@ router.put('/edit/:id', [
 })
 
 // remove record
-router.delete('/delete/:id', (req, res) => {
+router.delete('/:id', autenticated, (req, res) => {
   Record.findOne({ _id: req.params.id }, (err, record) => {
     if (err) return console.log(err);
     record.remove(err => {
