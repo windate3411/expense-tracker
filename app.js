@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
+
 // importing models
 const Record = require('./models/record')
 const User = require('./models/user')
@@ -10,6 +11,10 @@ const User = require('./models/user')
 // importing view template
 const exphbs = require('express-handlebars')
 const Handlebars = require('handlebars')
+
+// importing passport and session
+const session = require('express-session')
+const passport = require('passport')
 
 // importing console dresser
 const chalk = require('chalk')
@@ -45,6 +50,27 @@ db.once('open', () => {
   console.log(chalk.green.bold.inverse('db connected!'))
 })
 
+// using session
+app.use(session({
+  secret: 'my secret key',
+  resave: false,
+  saveUninitialized: false
+}))
+
+// using passport
+app.use(passport.initialize())
+app.use(passport.session())
+
+// importing passport config
+require('./config/passport')(passport)
+
+// setting local variable to use in views
+app.use((req, res, next) => {
+  res.locals.userName = 'Danny'
+  res.locals.user = req.user
+  // res.locals.isAuthenticated = req.isAuthenticated //加入這行
+  next()
+})
 // setting routes
 app.use('/', require('./routes/home.js'))
 app.use('/users', require('./routes/user'))

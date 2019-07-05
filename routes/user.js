@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-
+const passport = require('passport')
 // importing models for new docs in DB
 const Record = require('../models/record')
 const User = require('../models/user')
@@ -10,9 +10,17 @@ const bcrypt = require('bcryptjs')
 
 // importing express-validator for back-end validation
 const { check, validationResult } = require('express-validator')
+
 // login page
 router.get('/login', (req, res) => {
   res.render('login')
+})
+
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/users/login'
+  })(req, res, next)
 })
 
 
