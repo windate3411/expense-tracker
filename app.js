@@ -50,6 +50,9 @@ app.engine('handlebars', exphbs({
     get_date: function (date) {
       const record_date = JSON.stringify(date).slice(1, 11)
       return record_date
+    },
+    get_image: function (category_image, category) {
+      return category_image[category]
     }
   }
 }));

@@ -8,8 +8,8 @@
         </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          {{#each months}}
-          <a class="dropdown-item" href="#">{{this}}</a>
+          {{#each months_array}}
+          <a class="dropdown-item" href="/?months={{this}}&category={{../category}}">{{this}}</a>
           {{/each}}
         </div>
       </div>
@@ -22,9 +22,9 @@
         </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          {{#each category_array}}
+          <a class="dropdown-item" href="/?months={{../months}}&category={{this}}">{{this}}</a>
+          {{/each}}
         </div>
       </div>
     </div>
@@ -32,25 +32,23 @@
 
   <div class="row mb-3">
     <div class="col text-center">
-      <h1 class="text-center">總金額:250000</h1>
-      <p>{{#bold}}這是測試文字{{/bold}}</p>
-      <p>這次測試的名稱:{{userName}}</p>
+      <h1 class="text-center">{{months}}月份，在【{{category}}】類別的支出總金額為: {{totalAmount}} 元</h1>
     </div>
   </div>
 
   <div class="row">
     {{#each records}}
     <div class="col-md-8 d-flex justify-content-between bg-primary mb-2">
-      <div class="record_info d-flex">
+      <div class="record_info d-flex align-items-center">
         <div class="img mr-2">
-          image-palceholder
+          {{{get_image ../category_image this.category}}}
         </div>
         <div class="info">
           {{this.name}}
           {{get_date this.date}}
         </div>
       </div>
-      <div class="record_amount">
+      <div class="record_amount d-flex align-items-center">
         金額:{{this.amount}}
       </div>
     </div>

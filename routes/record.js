@@ -51,6 +51,7 @@ router.post('/new', autenticated, [
   }
   const newRecord = new Record()
   Object.assign(newRecord, req.body)
+  Object.assign(newRecord, { userId: req.user._id })
   newRecord.save(err => {
     if (err) return console.log(err);
     res.redirect('/')
@@ -84,7 +85,7 @@ router.put('/edit/:id', autenticated, [
     .isISO8601()
     .withMessage('請填入標準的日期格式')
 ], (req, res) => {
-  Record.findOne({ _id: req.params.id }, (err, record) => {
+  Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
     if (err) return console.log(err);
     // assign form input data to record
     Object.assign(record, req.body)
@@ -97,7 +98,7 @@ router.put('/edit/:id', autenticated, [
 
 // remove record
 router.delete('/:id', autenticated, (req, res) => {
-  Record.findOne({ _id: req.params.id }, (err, record) => {
+  Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
     if (err) return console.log(err);
     record.remove(err => {
       if (err) return console.log(err);
