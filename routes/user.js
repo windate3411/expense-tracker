@@ -13,13 +13,14 @@ const { check, validationResult } = require('express-validator')
 
 // login page
 router.get('/login', (req, res) => {
-  res.render('login')
+  res.render('login', { errors: [{ message: req.flash('error') }] })
 })
 
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: '/',
-    failureRedirect: '/users/login'
+    failureRedirect: '/users/login',
+    failureFlash: true
   })(req, res, next)
 })
 
