@@ -3,6 +3,11 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 
+// 判別開發環境
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 // importing tools 
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
@@ -36,14 +41,24 @@ app.use(flash())
 app.use(methodOverride('_method'))
 
 // setting handlebars
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.engine('handlebars', exphbs({
+  defaultLayout: 'main',
+  helpers: {
+    addUp: function (value) {
+      return value + 5
+    },
+    get_date: function (date) {
+      const record_date = JSON.stringify(date).slice(1, 11)
+      return record_date
+    }
+  }
+}));
 app.set('view engine', 'handlebars')
 Handlebars.registerHelper('bold', function (options) {
   return '<h1 class="mybold bg-primary">'
     + options.fn(this)
     + '</h1>';
 });
-
 
 // setting DB connection
 mongoose.connect('mongodb://127.0.0.1/record', { useNewUrlParser: true, useCreateIndex: true })
@@ -84,7 +99,7 @@ app.use((req, res, next) => {
 app.use('/', require('./routes/home.js'))
 app.use('/users', require('./routes/user'))
 app.use('/record', require('./routes/record'))
-
+app.use('/auth', require('./routes/auth'))
 // setting sever
 app.listen(3000, () => {
   console.log("you are now listening at port 3000");
