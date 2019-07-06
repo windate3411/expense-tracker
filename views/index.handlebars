@@ -37,52 +37,49 @@
   </div>
   {{> headsup}}
   <div class="row">
-    {{#each records}}
-    <div class="col-md-8 d-flex justify-content-between bg-secondary mb-2">
-      <div class="record_info d-flex align-items-center">
-        <div class="img mr-2">
+    <div class="col-md-12">
+      <ul class="list-group">
+        {{#each records}}
+        <li class="d-flex align-items-center">
           {{{get_image ../category_image this.category}}}
-        </div>
-        <div class="info">
-          {{this.name}}
-          {{get_date this.date}}
-        </div>
-      </div>
-      <div class="record_amount d-flex align-items-center">
-        金額:{{this.amount}}
-      </div>
-    </div>
-    <div class="col-md-4 mb-2 bg-light">
-      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#a{{{this.id}}}"
-        style="display:inline">
-        Delete
-      </button>
-      <a href="/record/edit/{{this.id}}">edit</a>
-    </div>
-
-    {{!-- modal --}}
-    <div class="modal fade" style="font-family:'Noto Sans TC', sans-serif;" id="a{{{this.id}}}" tabindex="-1"
-      role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">確認視窗</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+          <span>{{this.name}}</span>
+          <span>{{get_date this.date}}</span>
+          <span>金額:{{this.amount}}元</span>
+          <div class="">
+            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#a{{{this.id}}}"
+              style="display:inline">
+              Delete
             </button>
+            <a href="/record/edit/{{this.id}}" class="btn btn-info btn-sm">edit</a>
           </div>
-          <div class="modal-body">
-            你即將要刪除 {{{this.name}}} 這筆支出資料，刪除後資料將無法復原，確定刪除嗎?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <form action="/record/{{this.id}}?_method=DELETE" method="POST" style="display:inline">
-              <button type='submit' class="btn btn-primary">確認刪除</button>
-            </form>
+        </li>
+
+        {{!-- modal --}}
+        <div class="modal fade" style="font-family:'Noto Sans TC', sans-serif;" id="a{{{this.id}}}" tabindex="-1"
+          role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">確認視窗</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                你即將要刪除 {{{this.name}}} 這筆支出資料，刪除後資料將無法復原，確定刪除嗎?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <form action="/record/{{this.id}}?_method=DELETE" method="POST" style="display:inline">
+                  <button type='submit' class="btn btn-primary">確認刪除</button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+        <div class="nothing"></div>
+        {{/each}}
+      </ul>
     </div>
-    {{/each}}
   </div>
 </div>
