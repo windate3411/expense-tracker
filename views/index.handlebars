@@ -6,7 +6,7 @@
           aria-haspopup="true" aria-expanded="false">
           月份
         </a>
-
+        {{!-- create the months filter dropdown --}}
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           {{#each months_array}}
           <a class="dropdown-item" href="/?months={{this}}&category={{../category}}">{{this}}</a>
@@ -20,7 +20,7 @@
           aria-haspopup="true" aria-expanded="false">
           類別
         </a>
-
+        {{!-- create the category filter dropdown --}}
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           {{#each category_array}}
           <a class="dropdown-item" href="/?months={{../months}}&category={{this}}">{{this}}</a>
@@ -29,17 +29,19 @@
       </div>
     </div>
   </div>
-
-  <div class="row mb-3">
+  {{!-- display totalAmount --}}
+  <div class="row mt-3 mb-3">
     <div class="col text-center">
       <h1 class="text-center">{{months}}月份，{{#if category}}在【{{category}}】類別的{{/if}}支出總金額為: {{totalAmount}} 元</h1>
     </div>
   </div>
+
   {{> headsup}}
   <div class="row">
     <div class="col-md-12">
       <ul class="list-group">
         {{#each records}}
+        {{!-- list the records from db  --}}
         <li class="d-flex align-items-center">
           {{{get_image ../category_image this.category}}}
           <span>{{this.name}}</span>
@@ -50,7 +52,7 @@
               style="display:inline">
               Delete
             </button>
-            <a href="/record/edit/{{this.id}}" class="btn btn-info btn-sm">edit</a>
+            <a href="/record/edit/{{this.id}}" class="btn btn-success btn-sm">edit</a>
           </div>
         </li>
 
@@ -78,8 +80,19 @@
           </div>
         </div>
         <div class="nothing"></div>
+
         {{/each}}
       </ul>
     </div>
   </div>
+
+  {{!-- show the new button if there are some records shown --}}
+  {{#if records}}
+  <div class="row mt-5">
+    <div class="col-md-12 text-center">
+      <a href="/record/new" class="btn btn-info btn-sm">新增支出</a>
+    </div>
+  </div>
+  {{/if}}
+
 </div>
