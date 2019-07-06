@@ -34,7 +34,6 @@ module.exports = passport => {
       User.findOne({
         email: profile._json.email
       }).then(user => {
-        console.log(profile._json);
         // 如果 email 不存在就建立新的使用者
         if (!user) {
           // 因為密碼是必填欄位，所以我們可以幫使用者隨機產生一組密碼，然後用 bcrypt 處理，再儲存起來
@@ -54,7 +53,6 @@ module.exports = passport => {
             })
           )
         } else {
-          console.log(profile._json);
           return done(null, user)
         }
       })

@@ -32,13 +32,13 @@
 
   <div class="row mb-3">
     <div class="col text-center">
-      <h1 class="text-center">{{months}}月份，在【{{category}}】類別的支出總金額為: {{totalAmount}} 元</h1>
+      <h1 class="text-center">{{months}}月份，{{#if category}}在【{{category}}】類別的{{/if}}支出總金額為: {{totalAmount}} 元</h1>
     </div>
   </div>
 
   <div class="row">
     {{#each records}}
-    <div class="col-md-8 d-flex justify-content-between bg-primary mb-2">
+    <div class="col-md-8 d-flex justify-content-between bg-secondary mb-2">
       <div class="record_info d-flex align-items-center">
         <div class="img mr-2">
           {{{get_image ../category_image this.category}}}
@@ -52,7 +52,7 @@
         金額:{{this.amount}}
       </div>
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-4 mb-2 bg-light">
       <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#a{{{this.id}}}"
         style="display:inline">
         Delete
