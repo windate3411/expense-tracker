@@ -8,6 +8,7 @@ router.get('/', autenticated, (req, res) => {
   // create filter array
   const months_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   const category_array = ['食', '衣', '住', '行', '其他', '所有']
+
   //create variable to display totalAmout in view
   let totalAmount = 0
 
@@ -19,6 +20,7 @@ router.get('/', autenticated, (req, res) => {
   // create variables 
   let months = req.query.months
   let category = req.query.category
+
   // create font-awesome image object
   const category_image = {
     '食': '<i class="fas fa-utensils"></i>',

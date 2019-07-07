@@ -3,32 +3,38 @@
     {
       "name": "買飲料",
       "category": "日常消費",
-      "amount": "50"
+      "amount": "50",
+      "date": "2019-07-05"
     },
     {
       "name": "買飲料2",
       "category": "日常消費",
-      "amount": "50"
+      "amount": "50",
+      "date": "2019-07-05"
     },
     {
       "name": "買飲料3",
       "category": "日常消費",
-      "amount": "50"
+      "amount": "50",
+      "date": "2019-07-05"
     },
     {
       "name": "買飲料4",
       "category": "日常消費",
-      "amount": "150"
+      "amount": "150",
+      "date": "2019-07-05"
     },
     {
       "name": "買飲料5",
       "category": "日常消費",
-      "amount": "70"
+      "amount": "70",
+      "date": "2019-07-05"
     },
     {
       "name": "買飲料6",
       "category": "日常消費",
-      "amount": "60"
+      "amount": "60",
+      "date": "2019-07-05"
     }
   ]
 }
