@@ -35,8 +35,10 @@
       <h1 class="text-center">{{months}}月份，{{#if category}}在【{{category}}】類別的{{/if}}支出總金額為: {{totalAmount}} 元</h1>
     </div>
   </div>
-
+  {{!-- if there is not any records,show headsup  --}}
   {{> headsup}}
+
+  {{!-- display records --}}
   <div class="row">
     <div class="col-md-12">
       <ul class="list-group">
