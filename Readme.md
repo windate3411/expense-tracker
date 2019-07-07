@@ -43,7 +43,6 @@ db connected!
 
 Name | Description
 -- | --
-
 models/ | Mongoose schema
 models/user.js | Mongoose schema and model for user data
 models/record.js | Mongoose schema and model for record data
