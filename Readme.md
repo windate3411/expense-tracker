@@ -8,6 +8,12 @@
 
 提供兩個篩選器:支出分類以及月份，主畫面則會顯示篩選出來的支出以及對應的總額。
 
+導入種子資料後，可透過以下兩個使用者做使用測試，每個使用者已放入三筆支出資料
+Email:user1@example.com
+pwd  :12345678
+Email:user2@example.com
+pwd  :12345678
+
 ## 專案預覽 Project preview
 
 ![expense-tracker](https://media.giphy.com/media/gjTKDgneIjcKRXpZJG/giphy.gif)
