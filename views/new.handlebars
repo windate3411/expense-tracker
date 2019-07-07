@@ -6,7 +6,9 @@
       <h6 class="text-left ml-2 mt-2"><span class="text-danger">*</span>為必填資訊</h6>
       {{#each errors}}
       <div class="">
-        {{this.msg}}
+        <div class="alert alert-danger">
+          {{this.msg}}
+        </div>
       </div>
       {{/each}}
       <!-- Name -->

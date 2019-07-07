@@ -10,7 +10,7 @@ const bcrypt = require('bcryptjs')
 
 // importing express-validator for back-end validation
 const { check, validationResult } = require('express-validator')
-
+const { newUserCheck } = require('../utils/backend-validation')
 // login page
 router.get('/login', (req, res) => {
   res.render('login', { errors: [{ message: req.flash('error') }] })
@@ -30,21 +30,7 @@ router.get('/register', (req, res) => {
   res.render('register')
 })
 
-router.post('/register', [
-  check('name')
-    .not().isEmpty()
-    .withMessage('使用者名稱是必填項目喔!'),
-  check('email')
-    .not().isEmpty()
-    .withMessage('使用者信箱是必填項目喔!')
-    .isEmail()
-    .withMessage('請輸入正確的Email格式'),
-  check('password')
-    .not().isEmpty()
-    .withMessage('使用者密碼是必填項目喔!')
-    .isLength({ min: 8 })
-    .withMessage("使用者密碼必須至少8個字元!")
-], (req, res) => {
+router.post('/register', newUserCheck, (req, res) => {
   // if validation fails,redirect
   const err_msg = validationResult(req)
   if (!err_msg.isEmpty()) {
