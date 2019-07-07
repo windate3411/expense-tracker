@@ -38,8 +38,8 @@
       </div>
       {{!-- amount --}}
       <div class="md-form form-group">
-        <input type="text" class="form-control" name="amount" value="" pattern="^[0-9]*$" data-pattern-error="請輸入一個整數金額"
-          required>
+        <input type="text" class="form-control" name="amount" value="" pattern="^[0-9]*$" data-error='金額為必填欄位'
+          data-pattern-error="請輸入一個整數金額" required>
         <label for="amount">amount<span class="text-danger">*</span></label>
         <div class="help-block with-errors"></div>
       </div>

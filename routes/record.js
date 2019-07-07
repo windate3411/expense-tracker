@@ -4,6 +4,9 @@ const { autenticated } = require('../config/auth')
 // importing models
 const Record = require('../models/record')
 
+// importing utils
+const { currentTime } = require('../utils/getCurrentTime')
+
 // importing express-validator & check condition arrays
 const { check, validationResult } = require('express-validator');
 const { newRecordCheck } = require('../utils/backend-validation');
@@ -11,19 +14,7 @@ const { newRecordCheck } = require('../utils/backend-validation');
 // add new record
 router.get('/new', autenticated, (req, res) => {
   //create a function to get the current time to put in view
-  const date = new Date()
-  const currentDate = {
-    year: date.getFullYear(),
-    month: adjustTime(date.getMonth() + 1),
-    date: adjustTime(date.getDate())
-  }
-
-  function adjustTime(time) {
-    if (time.toString().length === 1) {
-      return `0${time}`
-    }
-  }
-  const result = `${currentDate.year}-${currentDate.month}-${currentDate.date}`
+  const result = `${currentTime.year}-${currentTime.month}-${currentTime.date}`
   res.render('new', { result })
 })
 
