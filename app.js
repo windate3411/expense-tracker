@@ -53,6 +53,9 @@ app.engine('handlebars', exphbs({
     },
     get_image: function (category_image, category) {
       return category_image[category]
+    },
+    if_selected: function (category_value, category) {
+      return category_value === category ? 'selected' : ''
     }
   }
 }));
@@ -94,8 +97,7 @@ app.use((req, res, next) => {
   res.locals.user = req.user
   res.locals.success_msg = req.flash('success_msg')
   res.locals.warning_msg = req.flash('warning_msg')
-  res.locals.isAuthenticated = req.isAuthenticated //加入這行
-  // res.locals.errors = [{ message: req.flash('error')[0] }]
+  res.locals.isAuthenticated = req.isAuthenticated
   next()
 })
 // setting routes

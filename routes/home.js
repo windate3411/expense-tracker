@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Record = require('../models/record')
 const { autenticated } = require('../config/auth')
+const anychart = require('anychart')
 // home page
 router.get('/', autenticated, (req, res) => {
   // create filter array

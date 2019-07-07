@@ -18,12 +18,12 @@
   {{!-- category --}}
   <div class="md-form form-group">
     <select id="category" name="category" class="custom-select form-control" required data-error="請選取一個清單項目喔">
-      <option value="" selected>選擇支出類別<span class="text-danger">*</span></option>
-      <option value="食">食</option>
-      <option value="衣">衣</option>
-      <option value="住">住</option>
-      <option value="行">行</option>
-      <option value="其他">其他</option>
+      <option value="">選擇支出類別<span class="text-danger">*</span></option>
+      <option value="食" {{if_selected record.category '食'}}>食</option>
+      <option value="衣" {{if_selected record.category '衣'}}>衣</option>
+      <option value="住" {{if_selected record.category '住'}}>住</option>
+      <option value="行" {{if_selected record.category '行'}}>行</option>
+      <option value="其他" {{if_selected record.category '其他'}}>其他</option>
     </select>
     <div class="help-block with-errors"></div>
   </div>
