@@ -36,6 +36,17 @@ npm install
 # 建立種子資料 Create sample data
 npm run seeder
 
+# 在根目錄下新增.env檔案並有著以下的格式 Create .env file which contains following info under project directory 
+
+FACEBOOK_ID=XXXXXXXX
+FACEBOOK_SECRET=XXXXXXXX
+FACEBOOK_CALLBACK=http://example.com/auth/facebook/callback
+
+GOOGLE_ID=XXXXXXXX
+GOOGLE_SECRET=XXXXXXXX
+GOOGLE_CALLBACK=http://example.com/auth/google/callback
+
+
 # 執行程式 Start the app
 npm run dev
 
