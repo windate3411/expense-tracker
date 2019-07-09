@@ -8,11 +8,27 @@
 
 提供兩個篩選器:支出分類以及月份，主畫面則會顯示篩選出來的支出以及對應的總額。
 
+此應用程式同時也發布在Heroku上，可以藉由此連結直接試用。https://lit-dusk-65055.herokuapp.com
+
+### #注意，由於此應用程式並未在Facebook & Google 發布，FB & google登入時會回報錯誤。
+
 導入種子資料後，可透過以下兩個使用者做使用測試，每個使用者已放入三筆支出資料
 Email:user1@example.com
 pwd  :12345678
 Email:user2@example.com
 pwd  :12345678
+
+
+This is a simple expense-tracker application. Users may choose diffrent ways to login.(Facebook,Google or local login)
+
+All features can only be used after logging in. Users may check/add/edit/delete their expense records and the monthly total will be displayed on the home page. 
+
+The application also provide two filters "Month" and "Category" to better find out where their money has been!
+
+Finally, this application has been deployed to Heroku. Check it out on https://lit-dusk-65055.herokuapp.com 
+
+### #Warnning
+Since the applicaiton hasn't been released on both Facebook & Google,the related login features will throw some errors.
 
 ## 專案預覽 Project preview
 
